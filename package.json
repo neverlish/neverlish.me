@@ -1,0 +1,15 @@
+{
+  "name": "neverlish.me",
+  "dependencies": {
+    "gatsby": "^2.13.32",
+    "gatsby-plugin-typescript": "^2.1.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "serve": "gatsby serve"
+  }
+}
