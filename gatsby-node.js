@@ -4,7 +4,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 module.exports = {
   onCreateNode: ({ node, getNode, actions }) => {
     if (node.internal.type === `MarkdownRemark`) {
-      const slug = createFilePath({ node, getNode, basePath: `posts` })
+      const slug = createFilePath({ node, getNode, basePath: `posts` }).replace(/^\/\d{4}\/\d{2}\/\d{2}/, '')
       actions.createNodeField({
         node,
         name: `link`,
@@ -29,7 +29,7 @@ module.exports = {
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
       actions.createPage({
         path: node.fields.link,
-        component: path.resolve(`./src/components/posts/detail.tsx`),
+        component: path.resolve(`./src/pages/posts/detail.tsx`),
         context: {
           link: node.fields.link,
         },

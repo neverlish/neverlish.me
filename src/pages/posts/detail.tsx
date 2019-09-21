@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { PostDetailQuery } from '../../../codegen/types';
-import Layout from '../layout';
+import Layout from '../../components/layout';
 
 export default ({ data: { markdownRemark: post } }: { data: PostDetailQuery }) => {
   return (
@@ -15,7 +15,7 @@ export default ({ data: { markdownRemark: post } }: { data: PostDetailQuery }) =
 };
 
 export const query = graphql`
-  query PostDetail ($link: String!) {
+  query PostDetail ($link: String) {
     markdownRemark(fields: { link: { eq: $link } }) {
       html
       frontmatter {
