@@ -20,5 +20,6 @@ module.exports = {
       }
     },
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-styled-components`,
   ],
 }

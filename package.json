@@ -9,7 +9,8 @@
     "prismjs": "^1.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "styled-components": "^4.3.2"
   },
   "license": "MIT",
   "scripts": {
@@ -24,6 +25,9 @@
     "@graphql-codegen/typescript": "1.7.0",
     "@graphql-codegen/typescript-operations": "1.7.0",
     "@types/react-helmet": "^5.0.10",
+    "@types/styled-components": "^4.1.19",
+    "babel-plugin-styled-components": "^1.10.6",
+    "gatsby-plugin-styled-components": "^3.1.6",
     "tslint": "^5.20.0",
     "typescript": "^3.6.3"
   }
