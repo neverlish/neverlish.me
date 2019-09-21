@@ -52,6 +52,7 @@ export default ({ children }: { children: React.ReactNode }) => {
             <Header style={{ display: 'flex' }}>
               <Link to='/'>{title}</Link>
               <div>
+                <Link to='/about'>about</Link>
                 <a href='https://github.com/neverlish/neverlish.me' target='_blank'>github</a>
               </div>
             </Header>
