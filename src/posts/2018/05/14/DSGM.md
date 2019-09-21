@@ -1,6 +1,7 @@
 ---
 title: "임백준의 대살개문 - 대한민국을 살리는 개발자 문화"
 date: "2018-11-14"
+tags: ["책"]
 ---
 
 ### ['임백준의 대살개문 - 대한민국을 살리는 개발자 문화'](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=82297322)의 요약

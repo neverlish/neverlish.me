@@ -12,7 +12,7 @@ module.exports = {
       })
     }
   },
-  createPages: async ({ graphql, actions }) => {
+  createPages: async ({ graphql, actions: { createPage } }) => {
     const result = await graphql(`
       {
         allMarkdownRemark {
@@ -23,6 +23,9 @@ module.exports = {
               }
             }
           }
+          group(field: frontmatter___tags) {
+            tag: fieldValue
+          }
         }
       }
     `);
@@ -30,7 +33,7 @@ module.exports = {
     const POSTS_PER_PAGE = 5;
     const numPages = Math.ceil(posts.length / POSTS_PER_PAGE);
     Array.from({ length: numPages }).forEach((_, i) => {
-      actions.createPage({
+      createPage({
         path: i === 0 ? `/` : `/page/${i + 1}`,
         component: path.resolve("./src/components/posts/list.tsx"),
         context: {
@@ -41,8 +44,17 @@ module.exports = {
         },
       })
     });
+    result.data.allMarkdownRemark.group.forEach(({ tag }) => {
+      createPage({
+        path: `/tags/${tag}`,
+        component: path.resolve('./src/components/tags/detail.tsx'),
+        context: {
+          tag,
+        },
+      });
+    });
     posts.forEach(({ node }) => {
-      actions.createPage({
+      createPage({
         path: node.fields.link,
         component: path.resolve(`./src/components/posts/detail.tsx`),
         context: {

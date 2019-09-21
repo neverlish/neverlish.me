@@ -645,6 +645,7 @@ export enum FileFieldsEnum {
   ChildMarkdownRemarkInternalType = 'childMarkdownRemark___internal___type',
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
   ChildMarkdownRemarkFrontmatterDate = 'childMarkdownRemark___frontmatter___date',
+  ChildMarkdownRemarkFrontmatterTags = 'childMarkdownRemark___frontmatter___tags',
   ChildMarkdownRemarkExcerpt = 'childMarkdownRemark___excerpt',
   ChildMarkdownRemarkRawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   ChildMarkdownRemarkFileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
@@ -972,6 +973,7 @@ export enum MarkdownRemarkFieldsEnum {
   InternalType = 'internal___type',
   FrontmatterTitle = 'frontmatter___title',
   FrontmatterDate = 'frontmatter___date',
+  FrontmatterTags = 'frontmatter___tags',
   Excerpt = 'excerpt',
   RawMarkdownBody = 'rawMarkdownBody',
   FileAbsolutePath = 'fileAbsolutePath',
@@ -1016,6 +1018,7 @@ export type MarkdownRemarkFrontmatter = {
    __typename?: 'MarkdownRemarkFrontmatter',
   title?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>,
 };
 
 
@@ -1029,6 +1032,7 @@ export type MarkdownRemarkFrontmatterDateArgs = {
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
   date?: Maybe<DateQueryOperatorInput>,
+  tags?: Maybe<StringQueryOperatorInput>,
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1517,6 +1521,7 @@ export type SitePageContext = {
   skip?: Maybe<Scalars['Int']>,
   numPages?: Maybe<Scalars['Int']>,
   currentPage?: Maybe<Scalars['Int']>,
+  tag?: Maybe<Scalars['String']>,
   link?: Maybe<Scalars['String']>,
 };
 
@@ -1525,6 +1530,7 @@ export type SitePageContextFilterInput = {
   skip?: Maybe<IntQueryOperatorInput>,
   numPages?: Maybe<IntQueryOperatorInput>,
   currentPage?: Maybe<IntQueryOperatorInput>,
+  tag?: Maybe<StringQueryOperatorInput>,
   link?: Maybe<StringQueryOperatorInput>,
 };
 
@@ -1631,6 +1637,7 @@ export enum SitePageFieldsEnum {
   ContextSkip = 'context___skip',
   ContextNumPages = 'context___numPages',
   ContextCurrentPage = 'context___currentPage',
+  ContextTag = 'context___tag',
   ContextLink = 'context___link',
   PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
@@ -2096,7 +2103,7 @@ export type PostDetailQuery = (
     & Pick<MarkdownRemark, 'html'>
     & { frontmatter: Maybe<(
       { __typename?: 'MarkdownRemarkFrontmatter' }
-      & Pick<MarkdownRemarkFrontmatter, 'title'>
+      & Pick<MarkdownRemarkFrontmatter, 'title' | 'tags'>
     )> }
   )> }
 );
@@ -2115,7 +2122,7 @@ export type GetPostListQuery = (
       { __typename?: 'MarkdownRemarkEdge' }
       & { node: (
         { __typename?: 'MarkdownRemark' }
-        & Pick<MarkdownRemark, 'id' | 'excerpt'>
+        & Pick<MarkdownRemark, 'excerpt'>
         & { frontmatter: Maybe<(
           { __typename?: 'MarkdownRemarkFrontmatter' }
           & Pick<MarkdownRemarkFrontmatter, 'title' | 'date'>
@@ -2124,6 +2131,46 @@ export type GetPostListQuery = (
           & Pick<MarkdownRemarkFields, 'link'>
         )> }
       ) }
+    )> }
+  )> }
+);
+
+export type GetPostsByTagQueryVariables = {
+  tag?: Maybe<Scalars['String']>
+};
+
+
+export type GetPostsByTagQuery = (
+  { __typename?: 'Query' }
+  & { allMarkdownRemark: Maybe<(
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { edges: Array<(
+      { __typename?: 'MarkdownRemarkEdge' }
+      & { node: (
+        { __typename?: 'MarkdownRemark' }
+        & Pick<MarkdownRemark, 'excerpt'>
+        & { frontmatter: Maybe<(
+          { __typename?: 'MarkdownRemarkFrontmatter' }
+          & Pick<MarkdownRemarkFrontmatter, 'title' | 'date'>
+        )>, fields: Maybe<(
+          { __typename?: 'MarkdownRemarkFields' }
+          & Pick<MarkdownRemarkFields, 'link'>
+        )> }
+      ) }
+    )> }
+  )> }
+);
+
+export type AllTagsQueryVariables = {};
+
+
+export type AllTagsQuery = (
+  { __typename?: 'Query' }
+  & { allMarkdownRemark: Maybe<(
+    { __typename?: 'MarkdownRemarkConnection' }
+    & { group: Array<(
+      { __typename?: 'MarkdownRemarkGroupConnection' }
+      & { tag: MarkdownRemarkGroupConnection['fieldValue'] }
     )> }
   )> }
 );

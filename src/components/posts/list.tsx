@@ -2,6 +2,7 @@ import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
 import { GetPostListQuery } from '../../../codegen/types';
+import PostList from '../../templates/PostList';
 import Layout from '../layout';
 
 interface IPostListProps {
@@ -23,43 +24,11 @@ const Pagination = styled.section`
   }
 `;
 
-const PostLiteItem = styled.section`
-  color: #000;
-  padding: 10px;
-  > div {
-    display: flex;
-    justify-content: space-between;
-    > strong {
-      font-weight: 700;
-      text-decoration: underline;
-    }
-    > span {
-      font-size: 12px;
-    }
-  }
-  &:hover, &:active {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-`;
-
 export default ({ data, pageContext: { currentPage, numPages } }: IPostListProps) => {
   const prevPage = currentPage - 1 === 1 ? '/' : `/page/${(currentPage - 1)}`;
   return (
     <Layout>
-      {data.allMarkdownRemark!.edges.map(({ node }) => {
-        const frontmatter = node.frontmatter!;
-        return <Link to={node.fields!.link!} key={node.id} style={{ textDecoration: 'none' }}>
-          <PostLiteItem>
-            <div>
-              <strong>{frontmatter.title}</strong>
-              <span>
-                {frontmatter.date}
-              </span>
-            </div>
-            <p>{node.excerpt}</p>
-          </PostLiteItem>
-        </Link>;
-      })}
+      <PostList posts={data.allMarkdownRemark!.edges!} />
       <Pagination>
         {currentPage !== 1 &&
           <Link to={prevPage}>prev</Link>}
@@ -79,7 +48,6 @@ export const query = graphql`
     ) {
       edges {
         node {
-          id
           frontmatter {
             title
             date(formatString: "YYYY.MM.DD.")

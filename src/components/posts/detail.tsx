@@ -2,15 +2,9 @@ import { graphql } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
 import { PostDetailQuery } from '../../../codegen/types';
+import SmallLink from '../../atoms/SmallLink';
+import Title from '../../atoms/Title';
 import Layout from '../layout';
-
-const Title = styled.h1`
-  font-size: 30px;
-  text-align: center;
-  border-bottom: 2px solid black;
-  padding-bottom: 10px;
-  margin-bottom: 30px;
-`;
 
 const Body = styled.div`
   font-size: 13px;
@@ -29,10 +23,13 @@ const Body = styled.div`
 `;
 
 export default ({ data: { markdownRemark: post } }: { data: PostDetailQuery }) => {
+  const { title, tags } = post!.frontmatter!;
   return (
     <Layout>
       <div>
-        <Title>{post!.frontmatter!.title}</Title>
+        <Title h1={title!}>
+          {tags && <ul>{tags.map((tag) => <SmallLink key={tag!} to={`/tags/${tag}`} label={`#${tag}`} />)}</ul>}
+        </Title>
         <Body dangerouslySetInnerHTML={{ __html: post!.html! }} />
       </div>
     </Layout>
@@ -41,10 +38,11 @@ export default ({ data: { markdownRemark: post } }: { data: PostDetailQuery }) =
 
 export const query = graphql`
   query PostDetail ($link: String!) {
-    markdownRemark(fields: { link: { eq: $link } }) {
+    markdownRemark(fields: {link: {eq: $link } }) {
       html
       frontmatter {
         title
+        tags
       }
     }
   }

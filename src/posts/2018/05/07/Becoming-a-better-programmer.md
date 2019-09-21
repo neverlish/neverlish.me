@@ -1,6 +1,7 @@
 ---
 title: "훌륭한 프로그래머가 되는 법"
 date: "2018-05-07"
+tags: ["책"]
 ---
 
 ### ['훌륭한 프로그래머 되는 법'](http://www.aladin.co.kr/shop/wproduct.aspx?ItemId=71445467)의 내용 요약

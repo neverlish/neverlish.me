@@ -1,6 +1,7 @@
 ---
 title: "성공하는 프로그래밍 공부법"
 date: "2018-11-20"
+tags: ["책"]
 ---
 
 ### ['성공하는 프로그래밍 공부법'](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=166254179)의 내용 요약
