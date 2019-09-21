@@ -1,5 +1,5 @@
-import * as React from 'react'
 import { graphql, Link } from 'gatsby';
+import * as React from 'react';
 import { IndexPageQuery } from '../../codegen/types';
 
 export default ({ data }: { data: IndexPageQuery }) => {
@@ -18,8 +18,8 @@ export default ({ data }: { data: IndexPageQuery }) => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query IndexPage {
@@ -45,5 +45,4 @@ export const query = graphql`
       }
     }
   }
-`
-
+`;

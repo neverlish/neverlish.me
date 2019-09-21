@@ -10,8 +10,8 @@ export default ({ data: { markdownRemark: post } }: { data: PostDetailQuery }) =
         <div dangerouslySetInnerHTML={{ __html: post!.html! }} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query PostDetail ($link: String!) {
@@ -22,5 +22,4 @@ export const query = graphql`
       }
     }
   }
-`
-
+`;
