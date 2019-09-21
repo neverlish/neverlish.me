@@ -8,18 +8,23 @@ const Title = styled.h1`
   font-size: 30px;
   text-align: center;
   border-bottom: 2px solid black;
+  padding-bottom: 10px;
   margin-bottom: 30px;
 `;
 
 const Body = styled.div`
-  font-size: 14px;
+  font-size: 13px;
   > :not(div) {
     padding-top: 5px;
     padding-bottom: 5px;
+    line-height: 2.0;
 
     &:hover, &:active {
       background-color: rgba(0, 0, 0, 0.05);
     }
+  }
+  & a {
+    color: #000;
   }
 `;
 
