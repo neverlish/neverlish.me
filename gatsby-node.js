@@ -25,11 +25,26 @@ module.exports = {
           }
         }
       }
-    `)
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    `);
+    const posts = result.data.allMarkdownRemark.edges;
+    const POSTS_PER_PAGE = 5;
+    const numPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+    Array.from({ length: numPages }).forEach((_, i) => {
+      actions.createPage({
+        path: i === 0 ? `/` : `/page/${i + 1}`,
+        component: path.resolve("./src/components/posts/list.tsx"),
+        context: {
+          limit: POSTS_PER_PAGE,
+          skip: i * POSTS_PER_PAGE,
+          numPages,
+          currentPage: i + 1,
+        },
+      })
+    });
+    posts.forEach(({ node }) => {
       actions.createPage({
         path: node.fields.link,
-        component: path.resolve(`./src/pages/posts/detail.tsx`),
+        component: path.resolve(`./src/components/posts/detail.tsx`),
         context: {
           link: node.fields.link,
         },
