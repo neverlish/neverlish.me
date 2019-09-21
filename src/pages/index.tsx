@@ -1,11 +1,11 @@
 import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 import { IndexPageQuery } from '../../codegen/types';
+import Layout from '../components/layout';
 
 export default ({ data }: { data: IndexPageQuery }) => {
   return (
-    <div>
-      {data.site!.siteMetadata!.title}
+    <Layout>
       <h4>{data.allMarkdownRemark!.totalCount} Posts</h4>
       {data.allMarkdownRemark!.edges.map(({ node }) => (
         <div key={node.id}>
@@ -17,7 +17,7 @@ export default ({ data }: { data: IndexPageQuery }) => {
           <p>{node.excerpt}</p>
         </div>
       ))}
-    </div>
+    </Layout>
   );
 };
 
@@ -37,11 +37,6 @@ export const query = graphql`
             link
           }
         }
-      }
-    }
-    site {
-      siteMetadata {
-        title
       }
     }
   }

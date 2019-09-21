@@ -2014,6 +2014,20 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>,
   glob?: Maybe<Scalars['String']>,
 };
+export type GetSiteMetadataQueryVariables = {};
+
+
+export type GetSiteMetadataQuery = (
+  { __typename?: 'Query' }
+  & { site: Maybe<(
+    { __typename?: 'Site' }
+    & { siteMetadata: Maybe<(
+      { __typename?: 'SiteSiteMetadata' }
+      & Pick<SiteSiteMetadata, 'title'>
+    )> }
+  )> }
+);
+
 export type PostDetailQueryVariables = {
   link: Scalars['String']
 };
@@ -2052,12 +2066,6 @@ export type IndexPageQuery = (
           & Pick<MarkdownRemarkFields, 'link'>
         )> }
       ) }
-    )> }
-  )>, site: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title'>
     )> }
   )> }
 );
