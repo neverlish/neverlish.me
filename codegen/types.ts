@@ -1191,6 +1191,7 @@ export type QuerySitePluginArgs = {
   version?: Maybe<StringQueryOperatorInput>,
   pluginOptions?: Maybe<SitePluginPluginOptionsFilterInput>,
   nodeAPIs?: Maybe<StringQueryOperatorInput>,
+  ssrAPIs?: Maybe<StringQueryOperatorInput>,
   pluginFilepath?: Maybe<StringQueryOperatorInput>,
   packageJson?: Maybe<SitePluginPackageJsonFilterInput>
 };
@@ -1512,10 +1513,18 @@ export type SitePageConnectionGroupArgs = {
 
 export type SitePageContext = {
    __typename?: 'SitePageContext',
+  limit?: Maybe<Scalars['Int']>,
+  skip?: Maybe<Scalars['Int']>,
+  numPages?: Maybe<Scalars['Int']>,
+  currentPage?: Maybe<Scalars['Int']>,
   link?: Maybe<Scalars['String']>,
 };
 
 export type SitePageContextFilterInput = {
+  limit?: Maybe<IntQueryOperatorInput>,
+  skip?: Maybe<IntQueryOperatorInput>,
+  numPages?: Maybe<IntQueryOperatorInput>,
+  currentPage?: Maybe<IntQueryOperatorInput>,
   link?: Maybe<StringQueryOperatorInput>,
 };
 
@@ -1618,6 +1627,10 @@ export enum SitePageFieldsEnum {
   Component = 'component',
   ComponentChunkName = 'componentChunkName',
   IsCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
+  ContextLimit = 'context___limit',
+  ContextSkip = 'context___skip',
+  ContextNumPages = 'context___numPages',
+  ContextCurrentPage = 'context___currentPage',
   ContextLink = 'context___link',
   PluginCreatorId = 'pluginCreator___id',
   PluginCreatorParentId = 'pluginCreator___parent___id',
@@ -1660,10 +1673,18 @@ export enum SitePageFieldsEnum {
   PluginCreatorResolve = 'pluginCreator___resolve',
   PluginCreatorName = 'pluginCreator___name',
   PluginCreatorVersion = 'pluginCreator___version',
+  PluginCreatorPluginOptionsPlugins = 'pluginCreator___pluginOptions___plugins',
+  PluginCreatorPluginOptionsPluginsResolve = 'pluginCreator___pluginOptions___plugins___resolve',
+  PluginCreatorPluginOptionsPluginsId = 'pluginCreator___pluginOptions___plugins___id',
+  PluginCreatorPluginOptionsPluginsName = 'pluginCreator___pluginOptions___plugins___name',
+  PluginCreatorPluginOptionsPluginsVersion = 'pluginCreator___pluginOptions___plugins___version',
+  PluginCreatorPluginOptionsPluginsPluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
   PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
+  PluginCreatorPluginOptionsExcerptSeparator = 'pluginCreator___pluginOptions___excerpt_separator',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
+  PluginCreatorSsrApIs = 'pluginCreator___ssrAPIs',
   PluginCreatorPluginFilepath = 'pluginCreator___pluginFilepath',
   PluginCreatorPackageJsonName = 'pluginCreator___packageJson___name',
   PluginCreatorPackageJsonDescription = 'pluginCreator___packageJson___description',
@@ -1727,6 +1748,7 @@ export type SitePlugin = Node & {
   version?: Maybe<Scalars['String']>,
   pluginOptions?: Maybe<SitePluginPluginOptions>,
   nodeAPIs?: Maybe<Array<Maybe<Scalars['String']>>>,
+  ssrAPIs?: Maybe<Array<Maybe<Scalars['String']>>>,
   pluginFilepath?: Maybe<Scalars['String']>,
   packageJson?: Maybe<SitePluginPackageJson>,
 };
@@ -1850,10 +1872,18 @@ export enum SitePluginFieldsEnum {
   Resolve = 'resolve',
   Name = 'name',
   Version = 'version',
+  PluginOptionsPlugins = 'pluginOptions___plugins',
+  PluginOptionsPluginsResolve = 'pluginOptions___plugins___resolve',
+  PluginOptionsPluginsId = 'pluginOptions___plugins___id',
+  PluginOptionsPluginsName = 'pluginOptions___plugins___name',
+  PluginOptionsPluginsVersion = 'pluginOptions___plugins___version',
+  PluginOptionsPluginsPluginFilepath = 'pluginOptions___plugins___pluginFilepath',
   PluginOptionsName = 'pluginOptions___name',
   PluginOptionsPath = 'pluginOptions___path',
+  PluginOptionsExcerptSeparator = 'pluginOptions___excerpt_separator',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   NodeApIs = 'nodeAPIs',
+  SsrApIs = 'ssrAPIs',
   PluginFilepath = 'pluginFilepath',
   PackageJsonName = 'packageJson___name',
   PackageJsonDescription = 'packageJson___description',
@@ -1883,6 +1913,7 @@ export type SitePluginFilterInput = {
   version?: Maybe<StringQueryOperatorInput>,
   pluginOptions?: Maybe<SitePluginPluginOptionsFilterInput>,
   nodeAPIs?: Maybe<StringQueryOperatorInput>,
+  ssrAPIs?: Maybe<StringQueryOperatorInput>,
   pluginFilepath?: Maybe<StringQueryOperatorInput>,
   packageJson?: Maybe<SitePluginPackageJsonFilterInput>,
 };
@@ -1971,15 +2002,40 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 export type SitePluginPluginOptions = {
    __typename?: 'SitePluginPluginOptions',
+  plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>,
   name?: Maybe<Scalars['String']>,
   path?: Maybe<Scalars['String']>,
+  excerpt_separator?: Maybe<Scalars['String']>,
   pathCheck?: Maybe<Scalars['Boolean']>,
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>,
   name?: Maybe<StringQueryOperatorInput>,
   path?: Maybe<StringQueryOperatorInput>,
+  excerpt_separator?: Maybe<StringQueryOperatorInput>,
   pathCheck?: Maybe<BooleanQueryOperatorInput>,
+};
+
+export type SitePluginPluginOptionsPlugins = {
+   __typename?: 'SitePluginPluginOptionsPlugins',
+  resolve?: Maybe<Scalars['String']>,
+  id?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
+  version?: Maybe<Scalars['String']>,
+  pluginFilepath?: Maybe<Scalars['String']>,
+};
+
+export type SitePluginPluginOptionsPluginsFilterInput = {
+  resolve?: Maybe<StringQueryOperatorInput>,
+  id?: Maybe<StringQueryOperatorInput>,
+  name?: Maybe<StringQueryOperatorInput>,
+  version?: Maybe<StringQueryOperatorInput>,
+  pluginFilepath?: Maybe<StringQueryOperatorInput>,
+};
+
+export type SitePluginPluginOptionsPluginsFilterListInput = {
+  elemMatch?: Maybe<SitePluginPluginOptionsPluginsFilterInput>,
 };
 
 export type SitePluginSortInput = {
@@ -2045,14 +2101,16 @@ export type PostDetailQuery = (
   )> }
 );
 
-export type IndexPageQueryVariables = {};
+export type GetPostListQueryVariables = {
+  skip: Scalars['Int'],
+  limit: Scalars['Int']
+};
 
 
-export type IndexPageQuery = (
+export type GetPostListQuery = (
   { __typename?: 'Query' }
   & { allMarkdownRemark: Maybe<(
     { __typename?: 'MarkdownRemarkConnection' }
-    & Pick<MarkdownRemarkConnection, 'totalCount'>
     & { edges: Array<(
       { __typename?: 'MarkdownRemarkEdge' }
       & { node: (
