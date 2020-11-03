@@ -21,5 +21,12 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'G-N8BF32V3TT',
+        head: true
+      }
+    }
   ],
 }

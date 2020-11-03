@@ -2,6 +2,7 @@
   "name": "neverlish.me",
   "dependencies": {
     "gatsby": "^2.13.32",
+    "gatsby-plugin-google-analytics": "^2.4.0",
     "gatsby-plugin-typescript": "^2.1.2",
     "gatsby-remark-prismjs": "^3.3.14",
     "gatsby-source-filesystem": "^2.1.5",
