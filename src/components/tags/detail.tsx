@@ -22,6 +22,7 @@ export const query = graphql`
     ) {
       edges {
         node {
+          id
           frontmatter {
             title
             date(formatString: "YYYY.MM.DD.")
