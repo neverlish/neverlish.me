@@ -27,6 +27,14 @@ module.exports = {
         trackingId: 'G-N8BF32V3TT',
         head: true
       }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "G-N8BF32V3TT",
+        head: true,
+        cookieDomain: "neverlish.me",
+      }
     }
   ],
 }
