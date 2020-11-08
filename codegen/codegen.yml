@@ -1,8 +1,6 @@
 overwrite: true
 schema: http://localhost:8000/___graphql
-documents:
-  - ./src/**/*.{ts,tsx}
-  - ./node_modules/gatsby-*/**/*.js
+documents: ./src/**/*.{ts,tsx}
 generates:
   ./codegen/types.ts:
     plugins:
