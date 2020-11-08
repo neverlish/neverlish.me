@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
-import { MarkdownRemarkEdge } from '../../codegen/types';
+import { PostListItemFragment } from '../../codegen/types';
 
 const PostListItem = styled.section`
   color: #000;
@@ -22,19 +22,21 @@ const PostListItem = styled.section`
   }
 `;
 
-export default ({ posts }: { posts: MarkdownRemarkEdge[] }) => (
-  posts.map(({ node }) => {
-    const frontmatter = node.frontmatter!;
-    return <Link to={node.fields!.link!} key={node.id} style={{ textDecoration: 'none' }}>
-      <PostListItem>
-        <div>
-          <strong>{frontmatter.title}</strong>
-          <span>
-            {frontmatter.date}
-          </span>
-        </div>
-        <p>{node.excerpt}</p>
-      </PostListItem>
-    </Link>;
-  })
-);
+export default ({ posts }: { posts: PostListItemFragment[] }) => {
+  return <>
+    {posts.map(({ node }) => {
+      const frontmatter = node.frontmatter!;
+      return <Link to={node.fields!.link!} key={node.id} style={{ textDecoration: 'none' }}>
+        <PostListItem>
+          <div>
+            <strong>{frontmatter.title}</strong>
+            <span>
+              {frontmatter.date}
+            </span>
+          </div>
+          <p>{node.excerpt}</p>
+        </PostListItem>
+      </Link>;
+    })}
+  </>;
+};

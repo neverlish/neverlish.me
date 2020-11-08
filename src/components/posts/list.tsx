@@ -47,17 +47,7 @@ export const query = graphql`
       skip: $skip
     ) {
       edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "YYYY.MM.DD.")
-          }
-          excerpt
-          fields {
-            link
-          }
-        }
+        ...PostListItem
       }
     }
   }

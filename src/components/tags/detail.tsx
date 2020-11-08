@@ -15,23 +15,26 @@ export default ({ data, pageContext: { tag } }: { data: GetPostsByTagQuery, page
 );
 
 export const query = graphql`
+  fragment PostListItem on MarkdownRemarkEdge {
+    node {
+      id
+      frontmatter {
+        title
+        date(formatString: "YYYY.MM.DD.")
+      }
+      excerpt
+      fields {
+        link
+      }
+    }
+  }
   query GetPostsByTag($tag: String) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "YYYY.MM.DD.")
-          }
-          excerpt
-          fields {
-            link
-          }
-        }
+        ...PostListItem
       }
     }
   }
