@@ -2141,7 +2141,7 @@ export type PostDetailQueryVariables = Exact<{
 }>;
 
 
-export type PostDetailQuery = { __typename?: 'Query', markdownRemark?: { __typename?: 'MarkdownRemark', html?: string | null, frontmatter?: { __typename?: 'MarkdownRemarkFrontmatter', title?: string | null, tags?: Array<string | null> | null } | null } | null };
+export type PostDetailQuery = { __typename?: 'Query', markdownRemark?: { __typename?: 'MarkdownRemark', html?: string | null, tableOfContents?: string | null, frontmatter?: { __typename?: 'MarkdownRemarkFrontmatter', title?: string | null, tags?: Array<string | null> | null } | null } | null };
 
 export type GetPostListQueryVariables = Exact<{
   skip: Scalars['Int'];
