@@ -30,7 +30,7 @@ module.exports = {
       }
     `);
     const posts = result.data.allMarkdownRemark.edges;
-    const POSTS_PER_PAGE = 5;
+    const POSTS_PER_PAGE = 20;
     const numPages = Math.ceil(posts.length / POSTS_PER_PAGE);
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
