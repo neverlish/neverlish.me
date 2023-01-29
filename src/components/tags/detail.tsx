@@ -28,10 +28,11 @@ export const query = graphql`
       }
     }
   }
+
   query GetPostsByTag($tag: String) {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      sort: {frontmatter: {date: DESC}}
+      filter: {frontmatter: {tags: {in: [$tag]}}}
     ) {
       edges {
         ...PostListItem

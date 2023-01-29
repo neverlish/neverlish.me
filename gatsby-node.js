@@ -23,7 +23,7 @@ module.exports = {
               }
             }
           }
-          group(field: frontmatter___tags) {
+          group(field: {frontmatter: {tags: SELECT}}) {
             tag: fieldValue
           }
         }

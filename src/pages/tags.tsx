@@ -21,7 +21,7 @@ export default ({ data }: { data: AllTagsQuery }) => (
 export const query = graphql`
   query AllTags {
     allMarkdownRemark {
-      group(field: frontmatter___tags) {
+      group(field: {frontmatter: {tags: SELECT}}) {
         tag: fieldValue
       }
     }
