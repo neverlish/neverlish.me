@@ -1,18 +1,18 @@
 {
   "name": "neverlish.me",
   "dependencies": {
-    "gatsby": "^2.25.3",
-    "gatsby-plugin-google-analytics": "^2.4.0",
-    "gatsby-plugin-google-gtag": "^2.1.13",
-    "gatsby-plugin-typescript": "^2.1.2",
-    "gatsby-remark-prismjs": "^3.3.14",
-    "gatsby-source-filesystem": "^2.4.2",
-    "gatsby-transformer-remark": "^2.9.2",
-    "prismjs": "^1.17.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "gatsby": "^5.5.0",
+    "gatsby-plugin-google-analytics": "^5.5.0",
+    "gatsby-plugin-google-gtag": "^5.5.0",
+    "gatsby-plugin-typescript": "^5.5.0",
+    "gatsby-remark-prismjs": "^7.5.0",
+    "gatsby-source-filesystem": "^5.5.0",
+    "gatsby-transformer-remark": "^6.5.0",
+    "prismjs": "^1.29.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.3.6"
   },
   "license": "MIT",
   "scripts": {
@@ -23,14 +23,14 @@
     "lint": "tslint -p tsconfig.json"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.19.1",
-    "@graphql-codegen/typescript": "^1.17.11",
-    "@graphql-codegen/typescript-operations": "^1.17.9",
-    "@types/react-helmet": "^6.1.0",
-    "@types/styled-components": "^5.1.4",
-    "babel-plugin-styled-components": "^1.10.6",
-    "gatsby-plugin-styled-components": "^3.1.6",
+    "@graphql-codegen/cli": "^2.16.4",
+    "@graphql-codegen/typescript": "^2.8.7",
+    "@graphql-codegen/typescript-operations": "^2.5.12",
+    "@types/react-helmet": "^6.1.6",
+    "@types/styled-components": "^5.1.26",
+    "babel-plugin-styled-components": "^2.0.7",
+    "gatsby-plugin-styled-components": "^6.5.0",
     "tslint": "^6.1.3",
-    "typescript": "^4.0.5"
+    "typescript": "^4.9.4"
   }
 }
