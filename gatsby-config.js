@@ -22,19 +22,11 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: `gatsby-plugin-gtag`,
       options: {
         trackingId: 'G-N8BF32V3TT',
-        head: true
-      }
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "G-N8BF32V3TT",
-        head: true,
-        cookieDomain: "neverlish.me",
-      }
+        head: false,
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
