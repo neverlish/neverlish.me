@@ -23,16 +23,17 @@ const Body = styled.div`
 `;
 
 const TableOfContentsContainer = styled.div`
+  > h1 {
+    text-align: center;
+  }
   background-color: rgba(0, 0, 0, 0.03);
   padding: 10px;
   margin-top: 10px;
-  text-align: center;
 `; 
 
 const TableOfContents = styled.div`
   font-size: 13px;
   ul {
-    padding: 0;
     li {
       list-style-type: none;
       a {
