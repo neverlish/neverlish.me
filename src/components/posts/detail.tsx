@@ -22,14 +22,23 @@ const Body = styled.div`
   }
 `;
 
+const TableOfContentsContainer = styled.div`
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
+`; 
+
 const TableOfContents = styled.div`
   font-size: 13px;
   ul {
+    padding: 0;
     li {
       list-style-type: none;
       a {
         text-decoration: none;
         color: #000;
+        line-height: 1.5;
         &:hover, &:active {
           text-decoration: underline;
           background-color: rgba(0, 0, 0, 0.05);
@@ -47,10 +56,12 @@ export default ({ data: { markdownRemark: post } }: { data: PostDetailQuery }) =
         <Title h1={title!}>
           {tags && <ul>{tags.map((tag) => <SmallLink key={tag!} to={`/tags/${tag}`} label={`#${tag}`} />)}</ul>}
         </Title>
-        <h4>Table of Contents</h4>
-        <TableOfContents
-          dangerouslySetInnerHTML={{ __html: post!.tableOfContents! }}
-        />
+        <TableOfContentsContainer>
+          <h1>Table of Contents</h1>
+          <TableOfContents
+            dangerouslySetInnerHTML={{ __html: post!.tableOfContents! }}
+          />
+        </TableOfContentsContainer>
         <Body dangerouslySetInnerHTML={{ __html: post!.html! }} />
       </div>
     </Layout>

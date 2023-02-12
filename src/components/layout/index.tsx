@@ -12,9 +12,9 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
 
-  position: fixed;
+  position: sticky;
   top: 0;
-  width: calc(100% - 60px);
+  width: 100%;
 
   border-bottom: 1px solid #000;
   padding: 10px 0;
@@ -49,7 +49,7 @@ export default ({ children }: { children: React.ReactNode }) => {
 
           </Helmet>
           <Main>
-            <Header style={{ display: 'flex' }}>
+            <Header>
               <Link to='/'>{title}</Link>
               <div>
                 <Link to='/about'>about</Link>
