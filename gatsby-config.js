@@ -1,8 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `neverlish's blog`
+    title: `neverlish's blog`,
+    siteUrl: 'https://neverlish.me'
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://neverlish.me',
+        sitemap: 'https://neverlish.me/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
