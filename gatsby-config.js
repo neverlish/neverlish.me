@@ -20,15 +20,6 @@ module.exports = {
         path: `${__dirname}/posts/`,
       },
     },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        excerpt_separator: `<!-- end -->`,
-        plugins: [
-          `gatsby-remark-prismjs`
-        ],
-      }
-    },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
     {
@@ -41,7 +32,9 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
+        excerpt_separator: `<!-- end -->`,
         plugins: [
+          `gatsby-remark-prismjs`,
           {
             resolve: `gatsby-remark-table-of-contents`,
             options: {
